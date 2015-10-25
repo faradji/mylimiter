@@ -1,0 +1,27 @@
+{
+  "name": "mylimiter",
+  "version": "0.0.0",
+  "description": "express middleware for limiting the number of requests over a given time period using MySQL",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tcort/mylimiter"
+  },
+  "keywords": [
+    "express",
+    "rate",
+    "limiter",
+    "middleware",
+    "mysql"
+  ],
+  "author": "Thomas Cort <linuxgeek@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tcort/mylimiter/issues"
+  },
+  "homepage": "https://github.com/tcort/mylimiter",
+  "dependencies": {
+    "mysql": "^2.9.0"
+  }
+}
