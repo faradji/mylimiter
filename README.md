@@ -40,7 +40,7 @@ Returns:
 ```
 "use strict";
 
-var mylimiter = require('./index');
+var mylimiter = require('mylimiter');
 var express = require('express');
 var app = express();
 
