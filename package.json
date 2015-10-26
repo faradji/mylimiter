@@ -23,5 +23,8 @@
   "homepage": "https://github.com/tcort/mylimiter",
   "dependencies": {
     "mysql": "^2.9.0"
+  },
+  "devDependencies": {
+    "express": "^4.13.3"
   }
 }
