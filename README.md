@@ -49,8 +49,8 @@ app.get('/', function (req, res) {
 });
 
 app.use('/api', mylimiter({ // MySQL Config
-                        "user": "root",
-                        "password": "abc123",
+                        "user": "mylimiter",
+                        "password": "mylimiter",
                         "database": "example",
                         "host": "localhost"
                     },
@@ -63,6 +63,15 @@ app.use('/api', mylimiter({ // MySQL Config
 });
 
 app.listen(3000);
+```
+
+## Tips
+
+For added security, create a separate user that only can call the `drip()` procedure:
+
+```
+GRANT EXECUTE ON PROCEDURE example.drip TO 'mylimiter'@'localhost' IDENTIFIED BY 'mylimiter';
+FLUSH PRIVILEGES;
 ```
 
 ## License
