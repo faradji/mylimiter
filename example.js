@@ -9,8 +9,8 @@ app.get('/', function (req, res) {
 });
 
 app.use('/api', mylimiter({ // MySQL Config
-                        "user": "root",
-                        "password": "abc123",
+                        "user": "mylimiter",
+                        "password": "mylimiter",
                         "database": "example",
                         "host": "localhost"
                     },
