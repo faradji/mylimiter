@@ -61,6 +61,8 @@ app.use('/api', mylimiter({ // MySQL Config
 
     res.json({ hello: 'world' });
 });
+
+app.listen(3000);
 ```
 
 ## License
