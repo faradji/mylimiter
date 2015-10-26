@@ -4,7 +4,7 @@ CREATE TABLE `drips` (
     ts timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     bucket varchar(64) NOT NULL,
     PRIMARY KEY (`id`),
-    KEY `ts` (`ts`),
+    KEY `bucket` (`bucket`),
     KEY `bucket_ts` (`bucket`, `ts`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
