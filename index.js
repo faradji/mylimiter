@@ -12,24 +12,13 @@ module.exports = function myLimiter(poolOrConfig, bucketOrFunction, bucketSizeOr
         var bucketSize = (typeof bucketSizeOrFunction === "function") ? bucketSizeOrFunction(req, res) : bucketSizeOrFunction;
         var periodInSeconds = (typeof periodInSecondsOrFunction === "function") ? periodInSecondsOrFunction(req, res) : periodInSecondsOrFunction;
 
-        pool.getConnection(function(err, connection) {
+        pool.query('CALL drip(?, ?, ?)', [ bucket, bucketSize, periodInSeconds ] , function (err, result) {
             if (err) {
-                if (connection) {
-                    connection.release();
-                }
+                err.status = (err.sqlState === '45429') ? 429 : 500;
                 next(err);
                 return;
             }
-
-            connection.query('CALL drip(?, ?, ?)', [ bucket, bucketSize, periodInSeconds ] , function (err, result) {
-                connection.release();
-                if (err) {
-                    err.status = (err.sqlState === '45429') ? 429 : 500;
-                    next(err);
-                    return;
-                }
-                next();
-            });
+            next();
         });
     };
 };
