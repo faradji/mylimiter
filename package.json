@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/tcort/mylimiter",
   "dependencies": {
-    "mysql": "^2.9.0"
+    "mysql": "^2.9.0",
+    "ssi-logger": "^2.0.0"
   },
   "devDependencies": {
     "express": "^4.13.3"

@@ -1,6 +1,10 @@
 "use strict";
 
+var log = require('ssi-logger');
+process.on('log', log.consoleTransport());
+
 var mylimiter = require('./');
+
 var express = require('express');
 var app = express();
 
@@ -22,4 +26,6 @@ app.use('/api', mylimiter({ // MySQL Config
     res.json({ hello: 'world' });
 });
 
-app.listen(3000);
+app.listen(3000, function () {
+    log('INFO', 'http://localhost:3000/');
+});

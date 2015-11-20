@@ -1,5 +1,6 @@
 "use strict";
 
+var log = require('ssi-logger');
 var mysql = require('mysql');
 
 module.exports = function myLimiter(poolOrConfig, bucketOrFunction, bucketSizeOrFunction, periodInSecondsOrFunction) {
@@ -15,9 +16,15 @@ module.exports = function myLimiter(poolOrConfig, bucketOrFunction, bucketSizeOr
         pool.query('CALL drip(?, ?, ?)', [ bucket, bucketSize, periodInSeconds ] , function (err, result) {
             if (err) {
                 err.status = (err.sqlState === '45429') ? 429 : 500;
+                if (err.status === 429) {
+                    log('WARN', 'mylimiter limit exceeded client_ip=%s bucket=%s', req.ip, bucket);
+                } else {
+                    log('ERR', 'mylimiter db error client_ip=%s bucket=%s', req.ip, bucket, err);
+                }
                 next(err);
                 return;
             }
+            log('DEBUG', 'mylimiter ok client_ip=%s bucket=%s', req.ip, bucket);
             next();
         });
     };
