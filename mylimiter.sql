@@ -2,11 +2,11 @@ DROP TABLE IF EXISTS `drips`;
 CREATE TABLE `drips` (
     id int(11) NOT NULL AUTO_INCREMENT,
     ts timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    bucket varchar(64) NOT NULL,
+    bucket varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
     PRIMARY KEY (`id`),
     KEY `bucket` (`bucket`),
     KEY `bucket_ts` (`bucket`, `ts`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DELIMITER ;;
 DROP PROCEDURE IF EXISTS `drip`;;
