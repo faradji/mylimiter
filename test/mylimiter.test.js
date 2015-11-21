@@ -51,7 +51,6 @@ describe('mylimiter', function () {
             res.json({ message: 'Hello, World!' });
         });
         app.use(function (err, req, res, next) {
-            console.log(err, err.toString());
             res.sendStatus(err.status || 500);
         });
     });
