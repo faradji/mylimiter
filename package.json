@@ -1,6 +1,6 @@
 {
   "name": "mylimiter",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "express middleware for limiting the number of requests over a given time period using MySQL",
   "main": "index.js",
   "scripts": {
