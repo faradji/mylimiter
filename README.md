@@ -31,7 +31,7 @@ Parameters:
 Returns:
 
 * express middleware function:
-  * middleware function accepts `(req, res, next)`.
+  * middleware function accepts `(req, res, next)`. it also accepts `(callback)`.
   * calls the `drip()` procedure in the database.
   * calls `next()` upon success, and `next(err)` upon failure.
 
