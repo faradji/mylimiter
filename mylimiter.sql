@@ -14,10 +14,10 @@ CREATE PROCEDURE `drip`(buck varchar(64), size INT, period INT)
 BEGIN
     DECLARE count INT;
 
-    DELETE FROM drips WHERE bucket = buck AND ts < NOW() - INTERVAL period SECOND;
+    DELETE FROM drips WHERE bucket = buck COLLATE utf8_unicode_ci AND ts < NOW() - INTERVAL period SECOND;
 
     START TRANSACTION;
-    SELECT COUNT(*) INTO count FROM drips WHERE bucket = buck FOR UPDATE;
+    SELECT COUNT(*) INTO count FROM drips WHERE bucket = buck COLLATE utf8_unicode_ci FOR UPDATE;
     IF (count >= size) THEN
         SIGNAL SQLSTATE '45429' SET MESSAGE_TEXT='Bucket is Full';
     END IF;
