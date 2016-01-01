@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/tcort/mylimiter",
   "dependencies": {
-    "mysql": "^2.9.0",
-    "ssi-logger": "^2.0.0"
+    "mysql": "^2.10.0",
+    "ssi-logger": "^2.0.1"
   },
   "devDependencies": {
-    "dbtestutil": "^2.0.1",
+    "dbtestutil": "^2.0.2",
     "express": "^4.13.3",
-    "jshint": "^2.8.0",
+    "jshint": "^2.9.1-rc2",
     "mocha": "^2.3.4",
     "nconf": "^0.8.2",
     "supertest": "^1.1.0"
