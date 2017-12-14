@@ -50,12 +50,13 @@ module.exports = function myLimiter( poolOrConfig, bucketOrFunction, bucketSizeO
 								connection.release();
 								log( 'DEBUG', 'mylimiter', commitErr );
 							} );
-							connection.rollback( function () {
+							
+							log( 'ERR', 'mylimiter db error bucket=%s', bucket, queryErr );
+						}
+						connection.rollback( function () {
 								connection.release();
 								log( 'DEBUG', 'mylimiter', commitErr );
 							} );
-							log( 'ERR', 'mylimiter db error bucket=%s', bucket, queryErr );
-						}
 						next( queryErr );
 						return;
 					}
